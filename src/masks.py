@@ -1,4 +1,7 @@
-def get_mask_card_number(number_card: int) -> str:
+from typing import Union
+
+
+def get_mask_card_number(number_card: Union[int, str]) -> str:
     """Функция принимает на вход номер карты и шифрует его"""
 
     str_number_card = str(number_card)  # Преобразование числа в строку
@@ -7,7 +10,7 @@ def get_mask_card_number(number_card: int) -> str:
     return f"{str_number_card[0:4]} {str_number_card[4:6]}** **** {str_number_card[-4:]}"
 
 
-def get_mask_account(number_card: int) -> str:
+def get_mask_account(number_card: Union[int, str]) -> str:
     """Функция на вход номер счета и возвращает последние четыре цифры"""
 
     str_number_card = str(number_card)  # Преобразование числа в строку
