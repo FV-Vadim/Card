@@ -2,11 +2,9 @@ from typing import Any, Dict, List
 
 
 def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
-    """
-    Функция принимает на вход словарь list_of_dict,
+    """Функция принимает на вход словарь list_of_dict,
     фильтрует словарь банковских операций по параметру state,
-    записывает в словарь filtered_list_of_dict фильтрованный словарь.
-    """
+    записывает в словарь filtered_list_of_dict фильтрованный словарь."""
 
     if list_of_dict is None: # Если словарь пустой
         list_of_dict = []
@@ -19,12 +17,10 @@ def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED")
 
 
 def sort_by_date(list_of_dict: List[Dict[str, Any]], reverse_date: bool = True) -> List[Dict[str, Any]]:
-    """
-    Функция sort_by_date принимает на вход словарь list_of_dict,
+    """Функция sort_by_date принимает на вход словарь list_of_dict,
     ключ словаря лямбда функция со значением ключа: data
     направление "по возрастанию" или "по убыванию" зависит от булевого значения
-    по умолчанию значение True
-    """
+    по умолчанию значение True"""
 
     if list_of_dict is None: # Если словарь пустой
         list_of_dict = []
