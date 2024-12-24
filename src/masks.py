@@ -9,16 +9,14 @@ def get_mask_card_number(number_card: Union[int, str]) -> str:
     if number_card is None or not number_card:  # Если в номер карты передается пустой список или ничего не передается
         return "0"
     elif len(str(number_card)) > 16:  # Если количество символов больше 16
-        str_number_card_corrected = ''
-        verification_numbers = '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'  # Проверочные числа
+        str_number_card_correct = ""
+        verification_numbers = "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"  # Проверочные числа
         for letter in str_number_card:  # Цикл проверки символа в строке
             if letter in verification_numbers:  # Если введенных данных это цифра
-                str_number_card_corrected += letter  # Добавляется символ в строку
+                str_number_card_correct += letter  # Добавляется символ в строку
             else:
                 continue  # Пропускает остальные
-        return (
-            f"{str_number_card_corrected[0:4]} {str_number_card_corrected[4:6]}** **** {str_number_card_corrected[-4:]}"
-        )
+        return f"{str_number_card_correct[0:4]} {str_number_card_correct[4:6]}** **** {str_number_card_correct[-4:]}"
     else:
         # Кодировка номера, которая заменяет среднюю часть
         return f"{str_number_card[0:4]} {str_number_card[4:6]}** **** {str_number_card[-4:]}"
@@ -32,8 +30,8 @@ def get_mask_account(number_card: Union[int, str]) -> str:
     if number_card is None or not number_card:  # Если в номер карты передается пустой список или ничего не передается.
         return "0"
     elif len(str(number_card)) > 20:
-        str_number_count_corrected = ''
-        verification_numbers = '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'  # Проверочные числа
+        str_number_count_corrected = ""
+        verification_numbers = "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"  # Проверочные числа
         for letter in str_number_count:  # Цикл проверки символа в строке
             if letter in verification_numbers:  # Если введенных данных это цифра
                 str_number_count_corrected += letter  # Добавляется символ в строку
