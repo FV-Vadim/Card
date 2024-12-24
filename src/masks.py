@@ -1,53 +1,45 @@
-from typing import Union, List
+from typing import Union
 
 
-def get_mask_card_number(number_card: List[Union[int, str]]) -> str:
+def get_mask_card_number(number_card: Union[int, str]) -> str:
     """Функция принимает на вход номер карты и шифрует его"""
 
-    if list == number_card:
-        for number_key in number_card:
-            if len(number_key) > 16:
-                str_number_key = str(number_key)  # Преобразование числа в строку
-                str_number_key_no_space = ''
-                for letter in str_number_key:
-                    if letter != ' ':
-                        str_number_key_no_space += letter
-                    else:
-                        continue
-                return f"{str_number_key_no_space[0:4]} {str_number_key_no_space[4:6]}** **** {str_number_key_no_space[-4:]}"
-    elif number_card is None:
-        return '0'
-    elif not number_card:
-        return '0'
-    elif len(str(number_card)) > 16:
-        str_number_card_no_space = ''
-        str_number_card =  str(number_card)  # Преобразование числа в строку
-        for letter in str_number_card:
-            if letter != '[' or letter != ']':
-                continue
-            elif letter != ' ' or letter != "'":
-                str_number_card_no_space += letter
+    str_number_card = str(number_card)  # Преобразование числа в строку, исключение пробелов
+
+    if number_card is None or not number_card:  # Если в номер карты передается пустой список или ничего не передается
+        return "0"
+    elif len(str(number_card)) > 16:  # Если количество символов больше 16
+        str_number_card_corrected = ''
+        verification_numbers = '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'  # Проверочные числа
+        for letter in str_number_card:  # Цикл проверки символа в строке
+            if letter in verification_numbers:  # Если введенных данных это цифра
+                str_number_card_corrected += letter  # Добавляется символ в строку
             else:
-                continue
-        return f"{str_number_card_no_space[0:4]} {str_number_card_no_space[4:6]}** **** {str_number_card_no_space[-4:]}"
+                continue  # Пропускает остальные
+        return (
+            f"{str_number_card_corrected[0:4]} {str_number_card_corrected[4:6]}** **** {str_number_card_corrected[-4:]}"
+        )
     else:
-
-        str_number_card = str(number_card)  # Преобразование числа в строку
-        # кодировка номера, которая заменяет среднюю часть
+        # Кодировка номера, которая заменяет среднюю часть
         return f"{str_number_card[0:4]} {str_number_card[4:6]}** **** {str_number_card[-4:]}"
-
-
 
 
 def get_mask_account(number_card: Union[int, str]) -> str:
     """Функция на вход номер счета и возвращает последние четыре цифры"""
 
-    str_number_card: str = str(number_card)  # Преобразование числа в строку
+    str_number_count = str(number_card)  # Преобразование числа в строку
 
-    if not number_card:
-        return '0'
+    if number_card is None or not number_card:  # Если в номер карты передается пустой список или ничего не передается.
+        return "0"
+    elif len(str(number_card)) > 20:
+        str_number_count_corrected = ''
+        verification_numbers = '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'  # Проверочные числа
+        for letter in str_number_count:  # Цикл проверки символа в строке
+            if letter in verification_numbers:  # Если введенных данных это цифра
+                str_number_count_corrected += letter  # Добавляется символ в строку
+            else:
+                continue  # Пропускает остальные
+        return f"**{str_number_count_corrected[-4:]}"
     else:
-        # кодировка номера, которая выводит последние 4 цифры с кодировкой
-        return f"**{str_number_card[-4:]}"
-
-
+        # Кодировка номера, которая выводит последние 4 цифры с кодировкой
+        return f"**{str_number_count[-4:]}"

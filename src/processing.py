@@ -6,7 +6,7 @@ def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED")
     фильтрует словарь банковских операций по параметру state,
     записывает в словарь filtered_list_of_dict фильтрованный словарь."""
 
-    if list_of_dict is None: # Если словарь пустой
+    if list_of_dict is None:  # Если словарь пустой
         list_of_dict = []
     filtered_list_of_dict = []  # пустой словарь для фильтрованных значений
 
@@ -22,7 +22,7 @@ def sort_by_date(list_of_dict: List[Dict[str, Any]], reverse_date: bool = True) 
     направление "по возрастанию" или "по убыванию" зависит от булевого значения
     по умолчанию значение True"""
 
-    if list_of_dict is None: # Если словарь пустой
+    if list_of_dict is None:  # Если словарь пустой
         list_of_dict = []
     return sorted(
         list_of_dict, key=lambda dictionary_key: dictionary_key["date"], reverse=reverse_date
