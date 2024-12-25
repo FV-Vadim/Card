@@ -29,9 +29,7 @@ def mask_account_card(name_card: str, number_card: Union[int, str]) -> str:
 def get_date(date: str) -> str:
     """Функция форматирует строку с датой в установленный образец (ДД.ММ.ГГГГ)"""
 
-    if date is None:
-        return "Введите дату."
-    elif not date:
+    if date is None or not date:
         return "Введите дату."
     else:
         format_date = date.split("T")

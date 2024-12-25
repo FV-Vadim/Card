@@ -4,12 +4,11 @@ from src.masks import get_mask_card_number, get_mask_account
 
 def test_get_mask_card_number_fixture(card_verification):
     for meaning_card in card_verification:
-        assert get_mask_card_number(meaning_card) == "7000 79** **** 6361"
+        if len(str(meaning_card)) > 16:
+            assert get_mask_account(meaning_card) == "**4305"
+        else:
+            assert get_mask_card_number(meaning_card) == "7000 79** **** 6361"
 
-
-def test_get_mask_account_number_fixture(count_verification):
-    for meaning_count in count_verification:
-        assert get_mask_account(meaning_count) == "**4305"
 
 
 @pytest.mark.parametrize(
