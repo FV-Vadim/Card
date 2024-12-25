@@ -30,9 +30,9 @@ def get_date(date: str) -> str:
     """Функция форматирует строку с датой в установленный образец (ДД.ММ.ГГГГ)"""
 
     if date is None:
-        return 'Введите дату.'
+        return "Введите дату."
     elif not date:
-        return 'Введите дату.'
+        return "Введите дату."
     else:
         format_date = date.split("T")
 

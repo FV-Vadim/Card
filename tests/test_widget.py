@@ -26,7 +26,7 @@ def test_mask_account_card_fixture(card_name_verification):
         ("Счет", 64686473678894779589, "Счет **9589"),
         ("Счет", "6468 6473 6788 9477 9589", "Счет **9589"),
         ("Maestro", "1596 8378 6870 5199", "Maestro 1596 83** **** 5199"),
-    ]
+    ],
 )
 def test_mask_account_card(name, number_card, check_hidden_card):
     assert mask_account_card(name, number_card) == check_hidden_card
@@ -38,14 +38,7 @@ def test_get_date_fixture() -> str:
 
 
 @pytest.mark.parametrize(
-    'date, check_date',
-    [
-        ('2024-03-11T02:26:18.671407', '11.03.2024'),
-        ('', 'Введите дату.'),
-        ([], 'Введите дату.')
-    ]
+    "date, check_date", [("2024-03-11T02:26:18.671407", "11.03.2024"), ("", "Введите дату."), ([], "Введите дату.")]
 )
-
-
 def test_get_date(date, check_date):
     assert get_date(date) == check_date
