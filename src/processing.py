@@ -29,7 +29,7 @@ def sort_by_date(list_of_dict: List[Dict[str, Any]], reverse_date: bool = True) 
     направление "по возрастанию" или "по убыванию" зависит от булевого значения
     по умолчанию значение True"""
 
-    if not list_of_dict or list_of_dict is None:  # Если словарь пустой
+    if not list_of_dict or list_of_dict is None:  # Если словарь пустой или его нет
         return "Словарь с данными отсутствует"
     else:
         if not reverse_date:
