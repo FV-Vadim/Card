@@ -1,6 +1,9 @@
 from typing import Union
 
+from src import decorators
 
+
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def get_mask_card_number(number_card: Union[int, str]) -> str:
     """Функция принимает на вход номер карты и шифрует его"""
 
@@ -30,6 +33,7 @@ def get_mask_card_number(number_card: Union[int, str]) -> str:
     return coder_number_card
 
 
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def get_mask_account(number_card: Union[int, str]) -> str:
     """Функция на вход номер счета и возвращает последние четыре цифры"""
 

@@ -426,3 +426,43 @@ test_masks.py::test_get_mask_card_number_fixture PASSED                  [100%]
 0000 0000 0000 0013
 0000 0000 0000 0014
 ```
+
+## Используемые декораторы
+
+### @log
+Декоратор используется для записи результатов работы функций и отчетов об ошибках их выполнения.
+При успешном выполнении функции записывается сообщение:
+    
+    function_name ok
+
+### Пример логирования без исключений
+``` 
+get_mask_card_number ok
+get_mask_account ok
+get_mask_card_number ok
+get_mask_account ok
+get_mask_card_number ok
+get_mask_account ok
+get_mask_card_number ok
+get_mask_card_number ok
+get_mask_card_number ok
+get_mask_account ok
+filter_by_state ok
+sort_by_date ok
+```
+
+При получении ошибки выполнения функции записывается сообщение:
+
+    {function_name} error: {error message}, inputs: {function input parameters}
+
+Декоратор принимает на вход необязательный параметр 'filename', который задает имя файла с логами.
+При отсутствии 'filename' логи выводятся в консоль.
+
+### Пример логирования в тестах
+
+```
+func error: division by zero. Inputs: (1, 0), {}  # Вызванное исключение
+func ok  # Успешное логирование
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+```

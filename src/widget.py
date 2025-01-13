@@ -1,9 +1,11 @@
 from typing import Union
 
+from src import decorators
 from src.alphabetical import alphabetical
 from src.masks import get_mask_account, get_mask_card_number  # импорт функций
 
 
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def mask_account_card(name_card: str, number_card: Union[int, str]) -> str:
     """Функция обрабатывает информацию о картах и о счетах"""
 
@@ -32,6 +34,7 @@ def mask_account_card(name_card: str, number_card: Union[int, str]) -> str:
     return str_account_card
 
 
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def get_date(date: str) -> str:
     """Функция форматирует строку с датой в установленный образец (ДД.ММ.ГГГГ)"""
 

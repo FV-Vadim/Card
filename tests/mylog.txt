@@ -1,0 +1,16 @@
+func error: division by zero. Inputs: (1, 1), {}
+func error: division by zero. Inputs: (1, 1), {}
+func error: division by zero. Inputs: (1, 0), {}
+func error: division by zero. Inputs: (1, 0), {}
+func error: division by zero. Inputs: (1, 0), {}
+func error: division by zero. Inputs: (1, 0), {}
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
