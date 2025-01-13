@@ -1,6 +1,9 @@
 from typing import Any, Dict, List
 
+from src import decorators
 
+
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED") -> str | list[dict[str, Any]]:
     """Функция принимает на вход словарь list_of_dict,
     фильтрует словарь банковских операций по параметру state,
@@ -23,6 +26,7 @@ def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED")
     return filtered_list_of_dict
 
 
+@decorators.log(filename="mylog.txt")  # Декорирование функции
 def sort_by_date(list_of_dict: List[Dict[str, Any]], reverse_date: bool = True) -> str | list[dict[str, Any]]:
     """Функция sort_by_date принимает на вход словарь list_of_dict,
     ключ словаря лямбда функция со значением ключа: data
