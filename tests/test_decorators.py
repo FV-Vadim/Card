@@ -19,7 +19,7 @@ def test_log_decorator_function_error() -> None:
     file.close()  # Закрытие файла
 
     # Добавление текста ошибки если исключение сработало в mylog.txt
-    assert line[-1] == f"func error: division by zero, inputs: (1, 1), {"{}"}\n"
+    assert line[-1] == f"func error: division by zero. Inputs: (1, 0), {"{}"}\n"
 
 
 # тест успешного выполнения функции и записи лога в файл
@@ -52,7 +52,7 @@ def test_log_decorator_console_error(capsys: CaptureFixture[str]) -> None:
     captured = capsys.readouterr()  # Возвращение кортежа
 
     # Вывод текста ошибки в консоль
-    assert captured.out == f"func error: division by zero, inputs: (1, 1), {"{}"}\n\n"
+    assert captured.out == f"func error: division by zero. Inputs: (1, 1), {"{}"}\n\n"
 
 
 # тест успешного выполнения функции и вывода лога в консоль
