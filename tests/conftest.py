@@ -149,3 +149,23 @@ result_two = [
 @pytest.fixture
 def transaction_descriptions_verification(filter_by_currency_verification: list) -> Generator:
     return transaction_descriptions(filter_by_currency_verification)
+
+
+@pytest.fixture
+def valid_json_data() -> list:
+    return [
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589",
+        },
+    ]
+
+
+@pytest.fixture
+def transaction() -> dict:
+    return {"operationAmount": {"amount": "100", "currency": {"name": "USD.", "code": "USD"}}}
