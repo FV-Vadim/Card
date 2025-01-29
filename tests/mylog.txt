@@ -14,3 +14,14 @@ func error: division by zero. Inputs: (1, 0), {}
 func ok
 func error: division by zero. Inputs: (1, 0), {}
 func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+func ok
+func error: division by zero. Inputs: (1, 0), {}
+test_currency_conversion ok
+currency_conversion ok
+get_transaction_amount ok
