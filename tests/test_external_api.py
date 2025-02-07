@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import requests
 
@@ -9,7 +9,7 @@ from src.external_api import currency_conversion
 # тестирование функции currency_conversion
 @decorators.log(filename="mylog.txt")
 @patch("requests.request")
-def test_currency_conversion(mock_get) -> None:
+def test_currency_conversion(mock_get: Mock) -> None:
     mock_get.return_value.json.return_value = {
         "date": "2018-02-22",
         "historical": "",
