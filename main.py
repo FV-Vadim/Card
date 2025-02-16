@@ -1,5 +1,6 @@
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
+from src.read_financial_files import csv_reader, excel_reader
 from src.utils import get_json_transaction, get_transaction_amount
 from src.widget import get_date, mask_account_card
 
@@ -68,3 +69,12 @@ if __name__ == "__main__":
 
     open_file = get_json_transaction("./data/operations.json")
     print(get_transaction_amount(open_file))
+
+    """Запрос функций, для открытия словарей из файлов csv и excel, которые возвращают словарь"""
+    print("____Homework_13_1_5____")
+
+    print("Возврат словаря из CSV_FILE")
+    print(csv_reader("data//transactions.csv"))
+
+    print("Возврат словаря из EXCEL_FILE")
+    print(excel_reader("data//transactions_excel.xlsx"))

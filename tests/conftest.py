@@ -169,3 +169,37 @@ def valid_json_data() -> list:
 @pytest.fixture
 def transaction() -> dict:
     return {"operationAmount": {"amount": "100", "currency": {"name": "USD.", "code": "USD"}}}
+
+
+@pytest.fixture
+def csv_transaction() -> list[dict]:
+    return [
+        {
+            "id": 512976.0,
+            "state": "EXECUTED",
+            "date": "2022-02-10T02:59:35Z",
+            "amount": 14342.0,
+            "currency_name": "Naira",
+            "currency_code": "NGN",
+            "from": "American Express 2479027296417707",
+            "to": "Mastercard 2118723450691392",
+            "description": "Перевод с карты на карту",
+        }
+    ]
+
+
+@pytest.fixture
+def excel_transaction() -> list[dict]:
+    return [
+        {
+            "id": 650703.0,
+            "state": "EXECUTED",
+            "date": "2023-09-05T11:30:32Z",
+            "amount": 16210.0,
+            "currency_name": "Sol",
+            "currency_code": "PEN",
+            "from": "Счет 58803664561298323391",
+            "to": "Счет 39745660563456619397",
+            "description": "Перевод организации",
+        }
+    ]

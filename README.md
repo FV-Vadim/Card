@@ -581,3 +581,27 @@ amount = 82.21
 2025-02-08 03:07:04,629 - utils - INFO: Сумма операции в рублях. 31957.58 рублей.
 ```
 
+
+## Функиции csv_reader и excel_reader 
+
+Принимают на вход файл .csv или .xlsx, возвращают список словарей с данными в Python объекте
+
+### Пример работы логирования в модуле READ_FINANCIAL_FILES открытие рабочих файлов
+
+```
+2025-02-17 00:58:48,589 - read_financial_files - INFO: Чтение файла data//transactions.csv
+2025-02-17 00:58:48,686 - read_financial_files - INFO: Чтение файла data//transactions_excel.xlsx
+```
+
+### Пример работы логирования в модуле READ_FINANCIAL_FILES с использованием тестов
+
+```
+2025-02-17 00:56:38,613 - read_financial_files - INFO: Чтение файла test.csv
+2025-02-17 00:56:38,628 - read_financial_files - INFO: Чтение файла non_existent_file.csv
+2025-02-17 00:56:38,812 - read_financial_files - ERROR: Файл не найден
+2025-02-17 00:56:38,821 - read_financial_files - INFO: Чтение файла test.xlsx
+2025-02-17 00:56:38,830 - read_financial_files - INFO: Чтение файла non_existent_file.xlsx
+2025-02-17 00:56:38,830 - read_financial_files - ERROR: Файл не найден
+
+```
+
