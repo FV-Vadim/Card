@@ -1,5 +1,5 @@
 import json
-from unittest.mock import mock_open, patch
+from unittest.mock import Mock, mock_open, patch
 
 from src import decorators
 from src.utils import get_json_transaction, get_transaction_amount
@@ -23,7 +23,7 @@ def test_get_json_transactions_empty_file() -> None:
 
 
 @patch("builtins.open", new_callable=mock_open)
-def test_valid_file(mock_file, valid_json_data) -> None:
+def test_valid_file(mock_file: Mock, valid_json_data: dict) -> None:
 
     mock_file.return_value.__enter__.return_value.read.return_value = json.dumps(valid_json_data)
     # Устанавливаем значение, которое будет возвращено при чтении файла
@@ -69,7 +69,7 @@ def test_get_json_transactions_result() -> None:
 
 # Тест функции get_transactions_amount на правильность работы в рублях
 @patch("builtins.open", mock_open(read_data=data))
-def test_get_transaction_amount_rub(transaction) -> None:
+def test_get_transaction_amount_rub(transaction: dict) -> None:
     """Тест функции get_transaction_amount для транзакций в рублях."""
 
     transaction = get_json_transaction()[0]
@@ -78,7 +78,17 @@ def test_get_transaction_amount_rub(transaction) -> None:
 
 # Тест функции get_transactions_amount на конвертацию валют
 @patch("requests.request")
-def test_get_transaction_amount_usd(mock_currency, transaction) -> None:
+def test_get_transaction_amount_usd(mock_currency: Mock, transaction: dict) -> None:
     mock_response = mock_currency.return_value
     mock_response.json.return_value = {"result": 10343.8}
     assert get_transaction_amount(transaction) == float(10343.8)
+
+
+def test_get_operation_amount_exception_with_mock() -> None:
+    # Имитируем ситуацию, когда возникает исключение
+    operation = Mock()
+    operation.side_effect = KeyError("Custom error")
+
+    # Проверяем возвращаемое значение
+    result = get_transaction_amount(operation)
+    assert result is None

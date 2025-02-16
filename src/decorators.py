@@ -1,10 +1,10 @@
 from collections.abc import Callable
 
 
-def log(filename: str = "") -> object:
+def log(filename: str = "") -> Callable[[Callable], Callable]:
     """Декоратор определяет, куда будут записываться логи (в файл или в консоль)"""
 
-    def my_decorator(func: Callable) -> object:
+    def my_decorator(func: Callable) -> Callable:
         def wrapper(*args: str, **kwargs: int) -> object:
             try:
                 # Выполнение декорирования функции
