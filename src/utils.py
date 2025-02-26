@@ -4,7 +4,7 @@ from typing import Any
 
 from src import decorators
 from src.external_api import currency_conversion
-from src.logging import get_logger
+from src.my_logging import get_logger
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(current_dir, "../logs", "utils.log")
