@@ -1,13 +1,18 @@
 from typing import Generator
 
 
-def filter_by_currency(transactions: list, currency: str = "USD") -> Generator:
-    """Функция возвращает итератор, который поочередно выдает транзакции,
-    где валюта операции соответствует заданной (например, USD)"""
+def filter_by_currency(transactions: list, currency: str) -> Generator:
+    """
+    Функция получает на вход список транзакций и возвращает отфильтрованные значения в виде генератора
 
-    # Генератор с лямбда функцией который переходит в список словарей по ключу сравнивает значения и выдает результат
-    result = list(filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions))
-    yield result
+    :param transactions: список транзакций
+    :param currency: валюта
+    """
+    if transactions[0].get("currency_code") is None:
+        result = list(filter(lambda x: x.get("operationAmount").get("currency").get("code") == currency, transactions))
+    else:
+        result = list(filter(lambda x: x.get("currency_code") == currency, transactions))
+    yield from result
 
 
 def transaction_descriptions(transactions: list) -> Generator:

@@ -9,20 +9,19 @@ def filter_by_state(list_of_dict: List[Dict[str, Any]], state: str = "EXECUTED")
     фильтрует словарь банковских операций по параметру state,
     записывает в словарь filtered_list_of_dict фильтрованный словарь."""
 
-    if list_of_dict is None or not list_of_dict:  # Если словарь пустой или не имеет значений
+    if not list_of_dict:  # Если список пустой
         return "Словарь с данными отсутствует"
-    else:
-        filtered_list_of_dict = []  # пустой словарь для фильтрованных значений
 
-        if not state or state is None:  # Если нет значения или значение является пустым
-            state = "EXECUTED"
-            for dictionary_key in list_of_dict:
-                if dictionary_key["state"] == state:  # По заданному ключу state, сверяет значения
-                    filtered_list_of_dict.append(dictionary_key)  # Добавляет в словарь если значения совпали
-        else:
-            for dictionary_key in list_of_dict:
-                if dictionary_key["state"] == state:  # По заданному ключу state, сверяет значения
-                    filtered_list_of_dict.append(dictionary_key)  # Добавляет в словарь если значения совпали
+    if not state:  # Если значение state не передано
+        state = "EXECUTED"
+
+    filtered_list_of_dict = []  # Пустой список для фильтрованных значений
+
+    for dictionary_key in list_of_dict:
+        # Проверяем, есть ли ключ "state" в словаре
+        if "state" in dictionary_key and dictionary_key["state"] == state:
+            filtered_list_of_dict.append(dictionary_key)
+
     return filtered_list_of_dict
 
 
@@ -36,13 +35,8 @@ def sort_by_date(list_of_dict: List[Dict[str, Any]], reverse_date: bool = True) 
     if not list_of_dict or list_of_dict is None:  # Если словарь пустой или его нет
         return "Словарь с данными отсутствует"
     else:
-        if not reverse_date:
-            var_reverse_date = reverse_date is True
-            sorted_list_of_dict = sorted(
-                list_of_dict, key=lambda dictionary_key: dictionary_key["date"], reverse=var_reverse_date
-            )  # возвращает значение сортировки
-        else:
-            sorted_list_of_dict = sorted(
-                list_of_dict, key=lambda dictionary_key: dictionary_key["date"], reverse=reverse_date
-            )  # возвращает значение сортировки
+        valid_records = [record for record in list_of_dict if "date" in record]
+        sorted_list_of_dict = sorted(
+            valid_records, key=lambda dictionary_key: dictionary_key["date"], reverse=reverse_date
+        )  # возвращает значение сортировки
     return sorted_list_of_dict

@@ -3,12 +3,12 @@ from typing import Any
 import pytest
 
 from src.generators import card_number_generator, filter_by_currency
-from tests.conftest import result_one, result_two
+from tests.conftest import result_one, result_three, result_two
 
 
 def test_filter_by_currency_fixture(filter_by_currency_verification: list) -> None:
-    assert next(filter_by_currency(filter_by_currency_verification, "USD")) == result_one
-    assert next(filter_by_currency(filter_by_currency_verification, "RUB")) == result_two
+    assert list(filter_by_currency(filter_by_currency_verification, "USD")) == result_one
+    assert list(filter_by_currency(filter_by_currency_verification, "RUB")) == result_two
 
 
 def test_transaction_descriptions_fixture(transaction_descriptions_verification: Any) -> None:
@@ -41,3 +41,7 @@ def test_transaction_descriptions_fixture(transaction_descriptions_verification:
 )
 def test_card_number_generator(start_number: int, stop_number: int, expected_value: list[str]) -> None:
     assert list(card_number_generator(start_number, stop_number)) == expected_value
+
+
+def test_filter_usd(transactions_with_currency_code: list) -> None:
+    assert list(filter_by_currency(transactions_with_currency_code, "USD")) == result_three

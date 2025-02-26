@@ -16,13 +16,8 @@ def card_verification() -> list[str | int]:  # Возвращает номера
 
 
 @pytest.fixture
-def verification_card_name() -> str:  # Возвращает названия карты или счета
-    return "Maestro"
-
-
-@pytest.fixture
 def card_number_verification() -> str:  # Возвращает номер карты или номер счета
-    return "1596837868705199"
+    return "Maestro 1596837868705199"
 
 
 @pytest.fixture
@@ -144,6 +139,15 @@ result_two = [
         "to": "Счет 14211924144426031657",
     },
 ]
+
+
+@pytest.fixture
+def transactions_with_currency_code() -> list:
+    """Фикстура для создания набора транзакций с currency_code."""
+    return [{"id": 1, "currency_code": "USD"}, {"id": 2, "currency_code": "GBP"}, {"id": 3, "currency_code": "USD"}]
+
+
+result_three = [{"id": 1, "currency_code": "USD"}, {"id": 3, "currency_code": "USD"}]
 
 
 @pytest.fixture
